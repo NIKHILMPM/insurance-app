@@ -56,6 +56,13 @@ pipeline {
             }
         }
 
+        stage('Wait for EC2 SSH to be Ready') {
+            steps {
+                echo "⏳ Waiting for EC2 SSH to be ready..."
+                sh 'sleep 40'
+            }
+        }
+
         stage('Cleanup Old Inventory File') {
             steps {
                 sh 'rm -f inventory.ini || true'
