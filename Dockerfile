@@ -1,4 +1,11 @@
-FROM openjdk:11
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
+# Use OpenJDK base image
+FROM openjdk:17-jdk-alpine
+
+# Set working directory
+WORKDIR /app
+
+# Copy the jar file
+COPY target/*.jar app.jar
+
+# Run the jar
+ENTRYPOINT ["java", "-jar", "app.jar"]
